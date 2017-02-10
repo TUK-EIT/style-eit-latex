@@ -1,4 +1,4 @@
-\ProvidesPackage{EIT-Title}[2017/01/29 v.01 by Matthias Jung]
+\ProvidesPackage{EIT-Title}[2017-02-10 v.02 by Matthias Jung, Christian De Schryver]
 
 % language settings and option declaration
 % defines a global token "isGerman" that can also be used in the LaTeX files later 
@@ -106,12 +106,13 @@
 % TODO command:
 \newcommand{\todo}[1]{{\bf \color{tuk-red}TODO: [{#1}]}}
 
+
 % Cooperate Design TUK including PT-Sans:
 \newcommand{\pt}{\usefont{T1}{PTSans-TLF}{m}{n}}
 \newcommand{\ptc}{\usefont{T1}{PTSansCaption-TLF}{m}{n}}
 
-\titleformat{\section}{\LARGE\color{tuk-grey}\ptc}{\thesection}{1em}{}
-\titleformat{\subsection}{\Large\color{tuk-grey}\ptc}{\thesection}{1em}{}
+\titleformat{\section}{\LARGE\color{tuk-blue}\ptc}{\thesection}{1em}{}
+\titleformat{\subsection}{\Large\ptc}{\thesection}{1em}{}
 \titleformat{\subsubsection}{\large\color{tuk-grey}\ptc}{\thesection}{1em}{}
 
 \definecolor{tuk-grey}{RGB}{69,69,69}
@@ -139,7 +140,7 @@
 \renewcommand*{\maketitle}{%
     \thispagestyle{scrplain}
     \vspace{2.5cm}
-	{\noindent\Huge\color{tuk-grey}\ptc\@title\unskip\strut\par}
+	{\noindent\Huge\color{tuk-blue}\ptc\@title\unskip\strut\par}
     {\noindent\LARGE\color{tuk-grey}\ptc\@subtitle\unskip\strut\par}
     {\noindent\pt\color{tuk-grey}\itshape\@author\unskip\strut\par}
     \vspace{1cm}
