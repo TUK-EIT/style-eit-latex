@@ -4,7 +4,7 @@
 % defines a global token "isGerman" that can also be used in the LaTeX files later 
 \RequirePackage{etoolbox}
 \newtoggle{isGerman}
-\toggletrue{isGerman}
+\togglefalse{isGerman}
 
 \DeclareOption{en}{\togglefalse{isGerman}}
 \DeclareOption{de}{\toggletrue{isGerman}}
