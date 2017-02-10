@@ -1,5 +1,23 @@
 \ProvidesPackage{EIT-Title}[2017/01/29 v.01 by Matthias Jung]
 
+% language settings and option declaration
+% defines a global token "isGerman" that can also be used in the LaTeX files later 
+\RequirePackage{etoolbox}
+\newtoggle{isGerman}
+\toggletrue{isGerman}
+
+\DeclareOption{en}{\togglefalse{isGerman}}
+\DeclareOption{de}{\toggletrue{isGerman}}
+\ProcessOptions\relax
+
+% language support
+\iftoggle{isGerman}{
+  	\usepackage[ngerman]{babel}   % German language support 
+}{
+	\usepackage[english]{babel} % English language support
+}
+
+
 \RequirePackage{geometry}
 \geometry{
 	a4paper,
@@ -20,9 +38,6 @@
 % set 8-bit font enconding
 % see: http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
 \RequirePackage[T1]{fontenc}
-
-% Background image for title page
-\RequirePackage{wallpaper}
 
 % Breaking URLs
 \RequirePackage{url}
@@ -78,12 +93,17 @@
 \RequirePackage{color}
 \RequirePackage{lastpage}
 
-%%% END OF EIT PACKAGE INPUTS %%%
 
 
-\ThisCenterWallPaper{1.0}{style-eit-latex/backgrounds/bg_report_en.pdf}
+% Background image for title page
+\RequirePackage{wallpaper}
+\iftoggle{isGerman}{
+	\ThisCenterWallPaper{1.0}{style-eit-latex/backgrounds/bg_report_de.pdf}
+}{
+	\ThisCenterWallPaper{1.0}{style-eit-latex/backgrounds/bg_report_en.pdf}
+}
 
-% Todo Command:
+% TODO command:
 \newcommand{\todo}[1]{{\bf \color{tuk-red}TODO: [{#1}]}}
 
 % Cooperate Design TUK including PT-Sans:
@@ -124,4 +144,5 @@
     {\noindent\pt\color{tuk-grey}\itshape\@author\unskip\strut\par}
     \vspace{1cm}
 }
+
 \endinput
