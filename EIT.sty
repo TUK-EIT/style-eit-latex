@@ -1,4 +1,4 @@
-\ProvidesPackage{EIT-Title}[2017-02-10 v.02 by Matthias Jung, Christian De Schryver]
+\ProvidesPackage{EIT-Title}[2017/02/10 v.02 by Matthias Jung, Christian De Schryver]
 
 % language settings and option declaration
 % defines a global token "isGerman" that can also be used in the LaTeX files later 
@@ -124,14 +124,14 @@
 
 % Assert value of reference [when used in images]
 % Usage: \assertRefEqual{label}{expected number}
-\newcommand{\assertRefEqual}[2]{%
-    \begingroup
-        \ifnum \pdfstrcmp{\ref{#1}}{#2\hbox{}} = 0
-            \relax
-        \else
-            \errmessage{Reference #1 expected to be #2, but got \ref{#1}}
-        \fi
-    \endgroup}
+%\newcommand{\assertRefEqual}[2]{%
+%    \begingroup
+%        \ifnum \pdfstrcmp{\ref{#1}}{#2\hbox{}} = 0
+%            \relax
+%        \else
+%            \errmessage{Reference #1 expected to be #2, but got \ref{#1}}
+%        \fi
+%    \endgroup}
 
 % Titel Generation:
 \newcommand*{\subtitle}[1]{\gdef\@subtitle{#1}}
