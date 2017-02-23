@@ -61,7 +61,6 @@
 
 % Header and footer
 \RequirePackage{fancyhdr}
-\pagestyle{fancy}
 
 % Math packages
 \RequirePackage{amsmath}
@@ -164,7 +163,7 @@
 \newcommand*{\@subtitle}{}
 
 \renewcommand*{\maketitle}{%
-    \thispagestyle{scrplain}
+    \thispagestyle{frontpage}
     \vspace{2.5cm}
 	{\noindent\Huge\color{tuk-blue}\ptc\@title\unskip\strut\par}
     {\noindent\LARGE\color{tuk-black}\ptc\@subtitle\unskip\strut\par}
