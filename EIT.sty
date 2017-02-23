@@ -113,11 +113,15 @@
 
 \titleformat{\section}{\LARGE\color{tuk-blue}\ptc}{\thesection}{1em}{}
 \titleformat{\subsection}{\Large\ptc}{\thesection}{1em}{}
-\titleformat{\subsubsection}{\large\color{tuk-grey}\ptc}{\thesection}{1em}{}
+\titleformat{\subsubsection}{\large\color{tuk-coldgrey}\ptc}{\thesection}{1em}{}
 
-\definecolor{tuk-grey}{RGB}{69,69,69}
-\definecolor{tuk-red}{RGB}{171,7,27}
-\definecolor{tuk-blue}{RGB}{0,74,124}
+% Color definitions from TUK style handbook version 2015-02-04
+\definecolor{tuk-red}{RGB}{185,40,25}
+\definecolor{tuk-blue}{RGB}{0,95,140}
+\definecolor{tuk-coldgrey}{RGB}{130,140,150}
+\definecolor{tuk-warmgrey}{RGB}{130,125,120}
+\definecolor{tuk-black}{RGB}{0,0,0}
+
 
 % Non-breakable hyphen
 \newcommand{\hyph}{\mbox{-}}
@@ -141,8 +145,8 @@
     \thispagestyle{scrplain}
     \vspace{2.5cm}
 	{\noindent\Huge\color{tuk-blue}\ptc\@title\unskip\strut\par}
-    {\noindent\LARGE\color{tuk-grey}\ptc\@subtitle\unskip\strut\par}
-    {\noindent\pt\color{tuk-grey}\itshape\@author\unskip\strut\par}
+    {\noindent\LARGE\color{tuk-coldgrey}\ptc\@subtitle\unskip\strut\par}
+    {\noindent\pt\color{tuk-coldgrey}\itshape\@author\unskip\strut\par}
     \vspace{1cm}
 }
 
