@@ -8,6 +8,9 @@
 
 \DeclareOption{en}{\togglefalse{isGerman}}
 \DeclareOption{de}{\toggletrue{isGerman}}
+
+% set global font style to sans serif by passing [pt] option
+\DeclareOption{pt}{\renewcommand{\familydefault}{\sfdefault}}
 \ProcessOptions\relax
 
 % language support
