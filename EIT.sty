@@ -1,13 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TUK EIT Style for LaTeX Documents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{EIT-Title}[2017/02/10 v.02 by Matthias Jung, Christian De Schryver]
 
-% language settings and option declaration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Language Settings and Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % defines a global token "isGerman" that can also be used in the LaTeX files later 
 \RequirePackage{etoolbox}
 \newtoggle{isGerman}
 \togglefalse{isGerman}
 
+% set language by options [de] or [en]
+% default is English
 \DeclareOption{en}{\togglefalse{isGerman}}
 \DeclareOption{de}{\toggletrue{isGerman}}
+
+% set global font style to sans serif by passing [pt] option
+\DeclareOption{pt}{\renewcommand{\familydefault}{\sfdefault}}
 \ProcessOptions\relax
 
 % language support
@@ -18,6 +28,9 @@
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Layout Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{geometry}
 \geometry{
 	a4paper,
@@ -25,13 +38,17 @@
 	left=25.4mm,
 	right=25.4mm,
 	bottom=25.4mm,
-	headsep=12.5mm,
-	footskip=12.5mm
+	headsep=8mm,
+	footskip=10mm
 }
 
 % Line distance
 \renewcommand{\baselinestretch}{1.20}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Standard Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % set up unicode input:
 \RequirePackage[utf8]{inputenc}
 
@@ -43,9 +60,7 @@
 \RequirePackage[hyphens]{url}
 
 % Header and footer
-\RequirePackage{scrpage2}
-\pagestyle{scrheadings}
-\clearscrheadfoot
+\RequirePackage{fancyhdr}
 
 % Math packages
 \RequirePackage{amsmath}
@@ -89,12 +104,12 @@
 \RequirePackage{paratype}
 \RequirePackage{titlesec}
 \RequirePackage{titling}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{color}
 \RequirePackage{lastpage}
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Background and TUK Corporate Design
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Background image for title page
 \RequirePackage{wallpaper}
 \iftoggle{isGerman}{
@@ -102,9 +117,6 @@
 }{
 	\ThisCenterWallPaper{1.0}{style-eit-latex/backgrounds/bg_report_en.pdf}
 }
-
-% TODO command:
-\newcommand{\todo}[1]{{\bf \color{tuk-red}TODO: [{#1}]}}
 
 
 % Cooperate Design TUK including PT-Sans:
@@ -116,6 +128,7 @@
 \titleformat{\subsubsection}{\large\color{tuk-coldgrey}\ptc}{\thesection}{1em}{}
 
 % Color definitions from TUK style handbook version 2015-02-04
+\RequirePackage{color}
 \definecolor{tuk-red}{RGB}{185,40,25}
 \definecolor{tuk-blue}{RGB}{0,95,140}
 \definecolor{tuk-coldgrey}{RGB}{130,140,150}
@@ -123,8 +136,15 @@
 \definecolor{tuk-black}{RGB}{0,0,0}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Command Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO command:
+\newcommand{\todo}[1]{{\bf \color{tuk-red}TODO: [{#1}]}}
+
 % Non-breakable hyphen
 \newcommand{\hyph}{\mbox{-}}
+
 
 % Assert value of reference [when used in images]
 % Usage: \assertRefEqual{label}{expected number}
@@ -137,12 +157,13 @@
         \fi
     \endgroup}
 
-% Titel Generation:
+
+% Titel generation
 \newcommand*{\subtitle}[1]{\gdef\@subtitle{#1}}
 \newcommand*{\@subtitle}{}
 
 \renewcommand*{\maketitle}{%
-    \thispagestyle{scrplain}
+    \thispagestyle{frontpage}
     \vspace{2.5cm}
 	{\noindent\Huge\color{tuk-blue}\ptc\@title\unskip\strut\par}
     {\noindent\LARGE\color{tuk-black}\ptc\@subtitle\unskip\strut\par}
