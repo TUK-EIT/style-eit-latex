@@ -150,4 +150,18 @@
     \vspace{1cm}
 }
 
+% provide \mail command that prints e-mail-adresses as <yyy@yyy.zz> and provides correct link 
+% usage: \mail{<your e-mail-address>}
+% from: http://tex.stackexchange.com/questions/268/whats-the-best-way-to-write-e-mail-addresses
+\RequirePackage{xstring}
+\newcommand{\thelink}{\@empty}
+\newcommand{\link}[2]{%
+  \IfSubStr{#1}{:}{\renewcommand\thelink{#1}}{\renewcommand\thelink{#1:#2}}%
+  \href{\thelink}{\nolinkurl{#2}}%
+}
+\newcommand{\mail}[1]{
+	\renewcommand\thelink{mailto:#1}
+	<\href{\thelink}{\nolinkurl{#1}}>
+}
+
 \endinput
