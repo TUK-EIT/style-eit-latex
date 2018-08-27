@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TUK EIT Style for LaTeX Documents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesPackage{EIT-Title}[2017/02/10 v.02 by Matthias Jung, Christian De Schryver]
+\ProvidesPackage{style-eit-latex/EIT}[2017/06/02 v0.3 by Matthias Jung, Christian De Schryver]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Language Settings and Options
@@ -91,7 +91,13 @@
 \newcommand{\minitab}[2][c]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \RequirePackage{tabularx}
 \newcolumntype{Y}{>{\raggedleft\arraybackslash}X}% raggedleft column X
-\RequirePackage[detect-all]{siunitx}
+
+\iftoggle{isGerman}{
+	\RequirePackage[detect-all,decimalsymbol=comma]{siunitx}
+}{
+	\RequirePackage[detect-all]{siunitx}
+}
+
 \RequirePackage{threeparttable} % tables with footnotes
 \RequirePackage{makecell}
 \RequirePackage{stfloats} % allow double column table at the bottom
