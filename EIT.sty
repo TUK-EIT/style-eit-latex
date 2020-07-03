@@ -22,9 +22,9 @@
 
 % language support
 \iftoggle{isGerman}{
-  	\usepackage[ngerman]{babel}   % German language support 
+  	\RequirePackage[ngerman]{babel}   % German language support 
 }{
-	\usepackage[english]{babel} % English language support
+	\RequirePackage[english]{babel} % English language support
 }
 
 
@@ -55,6 +55,10 @@
 % set 8-bit font enconding
 % see: http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
 \RequirePackage[T1]{fontenc}
+
+% Caption sizes
+\RequirePackage{caption}
+\captionsetup[figure]{font=footnotesize}
 
 % Breaking URLs with hyphens
 \RequirePackage[hyphens]{url}
@@ -103,7 +107,11 @@
 \RequirePackage{stfloats} % allow double column table at the bottom
 
 % Clever references that automatically add Figure, Equation, Table, etc.
-\RequirePackage[capitalize]{cleveref}
+\iftoggle{isGerman}{
+  	\RequirePackage[german, capitalize]{cleveref}
+}{
+	\RequirePackage[capitalize]{cleveref}
+}
 
 % Other Packages:
 \RequirePackage{graphicx}
